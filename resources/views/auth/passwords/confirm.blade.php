@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Confirm Password') }}</div>
+                <div class="card-header">{{ __('Confirm Identity') }}</div>
 
                 <div class="card-body">
-                    {{ __('Please confirm your password before continuing.') }}
+                    {{ __('Please confirm your identity before continuing.') }}
 
                     <form method="POST" action="{{ route('password.confirm') }}">
                         @csrf
@@ -17,9 +17,31 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <input id="password" type="password" class="form-control @error('security_answer') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="" class="col-md-4 col-form-label text-md-right">security Question</label>
+
+                            <div class="col-md-6">
+                                <p>{{ $SecurityQuestion->question}}</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">Answer security Question</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="text" class="form-control @error('security_answer') is-invalid @enderror" name="answer" required>
+
+                                @error('security_answer')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -30,7 +52,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Confirm Password') }}
+                                    {{ __('confirm identity') }}
                                 </button>
 
                                 @if (Route::has('password.request'))

@@ -61,6 +61,26 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Security Question</label>
+
+                            <div class="col-md-6">
+                                <select name="security_question" class="form-control">
+                                    @foreach ($securityQuestion as $sq)
+                                        <option value="{{ $sq->id }}">{{ $sq->question }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Answer</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="security_answer" required>
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

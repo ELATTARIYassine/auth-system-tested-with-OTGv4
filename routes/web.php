@@ -20,3 +20,4 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/changeBilling-info', 'HomeController@ChangeBillingInfro')->name('cbi')->middleware('password.confirm');
